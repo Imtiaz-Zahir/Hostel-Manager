@@ -10,11 +10,12 @@ export async function GET(req: NextRequest) {
     const newStudentId = searchParams.get("newStudentId");
     const newRoomNo = searchParams.get("newRoomNo");
 
-    if (!id || !newStatus || !newStudentId || !newRoomNo)
+    if (!id || !newStatus || !newStudentId || !newRoomNo) {
       return NextResponse.json({
         status: "0",
         message: "All fields are required",
       });
+    }
 
     await connectToDB();
 
@@ -27,11 +28,12 @@ export async function GET(req: NextRequest) {
       }
     );
 
-    if (!newUser)
+    if (!newUser) {
       return NextResponse.json({
         status: "0",
-        message: "Something went wrong",
+        message: "user not found",
       });
+    }
 
     return NextResponse.json({
       status: "1",
