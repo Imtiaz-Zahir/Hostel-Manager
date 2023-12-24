@@ -30,6 +30,8 @@ export async function POST(req: NextRequest) {
       !session ||
       !password
     ) {
+      console.log("All fields are required");
+      
       return NextResponse.json({
         status: "0",
         message: "All fields are required",
@@ -59,6 +61,8 @@ export async function POST(req: NextRequest) {
       password: password,
     });
     if (!newStudent) {
+      console.log("!newStudent");
+      
       return NextResponse.json({
         status: "0",
         message: "Something went wrong",
@@ -69,6 +73,8 @@ export async function POST(req: NextRequest) {
       message: "Registration successful",
     });
   } catch (error) {
+    console.log("error", error);
+    
     return NextResponse.json({ status: "0", message: "Something went wrong" });
   }
 }
