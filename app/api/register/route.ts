@@ -30,7 +30,7 @@ export async function POST(req: NextRequest) {
       !session ||
       !password
     ) {
-      console.log("All fields are required");
+      console.log(formData);
       
       return NextResponse.json({
         status: "0",
