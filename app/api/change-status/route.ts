@@ -5,6 +5,9 @@ import Student from "@/models/student";
 export async function GET(req: NextRequest) {
   try {
     const { searchParams } = new URL(req.url);
+
+    console.log(searchParams);
+    
     const id = searchParams.get("userId");
     const newStatus = searchParams.get("status");
     const newStudentId = searchParams.get("newStudentId");
