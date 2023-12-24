@@ -41,7 +41,8 @@ export async function POST(req: NextRequest) {
       .sort({ uid: -1 })
       .limit(1)
       .select("uid");
-    const newUid = parseInt(student.uid) + 1;
+      
+    const newUid = parseInt(student.uid) + 1 ??1;
 
     const newStudent = await Student.create({
       uid: newUid.toString(),
