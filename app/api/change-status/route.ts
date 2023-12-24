@@ -40,6 +40,7 @@ export async function GET(req: NextRequest) {
       message: "Status changed successfully",
     });
   } catch (error) {
+    console.log(error);
     return NextResponse.json({
       status: "0",
       message: "Something went wrong",
