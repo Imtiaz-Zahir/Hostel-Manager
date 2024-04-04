@@ -22,7 +22,7 @@ export async function GET() {
       "is_admin",
       "is_verified",
     ]);
-    if (!students) {
+    if (!students || students.lengtn==0) {
       return NextResponse.json({
         status: "0",
         message: "No data found",
