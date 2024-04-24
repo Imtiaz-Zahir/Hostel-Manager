@@ -5,6 +5,8 @@ import Student from "@/models/student";
 export async function POST(req: NextRequest) {
   try {
     const formData = await req.formData();
+
+    console.log(formData);
     
     const id = formData.get("userId");
     const newStatus = formData.get("status");
