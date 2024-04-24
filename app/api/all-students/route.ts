@@ -5,24 +5,8 @@ import { NextResponse } from "next/server";
 export async function GET() {
   try {
     await connectToDB();
-    const students = await Student.find().select([
-      "uid",
-      "name",
-      "roll",
-      "registration",
-      "phone",
-      "father",
-      "fatherphone",
-      "mother",
-      "dist",
-      "upzila",
-      "session",
-      "room_no",
-      "student_id",
-      "is_admin",
-      "is_verified",
-    ]);
-    if (!students || students.lengtn==0) {
+    const students = await Student.find().select("-password");
+    if (!students || students.length==0) {
       return NextResponse.json({
         status: "0",
         message: "No data found",

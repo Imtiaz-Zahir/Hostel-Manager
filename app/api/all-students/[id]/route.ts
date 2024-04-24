@@ -8,23 +8,7 @@ export async function GET(
 ) {
   try {
     await connectToDB();
-    const students = await Student.find({ uid: params.id }).select([
-      "uid",
-      "name",
-      "roll",
-      "registration",
-      "phone",
-      "father",
-      "fatherphone",
-      "mother",
-      "dist",
-      "upzila",
-      "session",
-      "room_no",
-      "student_id",
-      "is_admin",
-      "is_verified",
-    ]);
+    const students = await Student.find({ uid: params.id }).select("-password");
     if (!students) {
       return NextResponse.json({
         status: "0",
