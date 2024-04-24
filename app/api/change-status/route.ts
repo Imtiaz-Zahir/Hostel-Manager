@@ -2,16 +2,14 @@ import { NextRequest, NextResponse } from "next/server";
 import { connectToDB } from "@/database/connect";
 import Student from "@/models/student";
 
-export async function GET(req: NextRequest) {
+export async function POST(req: NextRequest) {
   try {
-    const { searchParams } = new URL(req.url);
-
-    console.log(searchParams);
+    const formData = await req.formData();
     
-    const id = searchParams.get("userId");
-    const newStatus = searchParams.get("status");
-    const newStudentId = searchParams.get("newStudentId");
-    const newRoomNo = searchParams.get("newRoomNo");
+    const id = formData.get("userId");
+    const newStatus = formData.get("status");
+    const newStudentId = formData.get("newStudentId");
+    const newRoomNo = formData.get("newRoomNo");
 
     if (!id || !newStatus || !newStudentId || !newRoomNo) {
       return NextResponse.json({
