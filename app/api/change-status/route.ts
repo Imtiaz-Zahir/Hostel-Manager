@@ -29,6 +29,8 @@ export async function POST(req: NextRequest) {
       }
     );
 
+    console.log(newUser);
+
     if (!newUser) {
       return NextResponse.json({
         status: "0",
