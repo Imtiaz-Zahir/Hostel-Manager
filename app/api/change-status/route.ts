@@ -22,7 +22,7 @@ export async function POST(req: NextRequest) {
 
     await connectToDB();
 
-    const newUser = await Student.findOneAndUpdate(
+    const newUser = await Student.updateOne(
       { uid: id },
       {
         is_verified: newStatus,
